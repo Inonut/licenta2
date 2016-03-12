@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<MenuBar xmlns:fx="http://javafx.com/fxml" fx:controller="licenta.controller.MenuBarController">
+    <Menu text="Fisier">
+        <MenuItem text="Iesire"/>
+    </Menu>
+    <Menu text="Salveaza">
+        <MenuItem text="Salveaza imaginea curenta" onAction="#onSaveCurrentImage"/>
+        <MenuItem text="Salveaza imaginea curenta scalata" onAction="#onSaveCurrentScaledImage"/>
+        <MenuItem text="Salveaza datele antrenate scalate" onAction="#onSaveTrainDataImage"/>
+        <MenuItem text="Salveaza reteaua" onAction="#onSaveTrainNet"/>
+        <MenuItem text="Importa reteaua" onAction="#onImportTrainNet"/>
+        <!--<MenuItem text="Salveaza datele testate scalate"/>-->
+        <!--<SeparatorMenuItem  />-->
+    </Menu>
+    <Menu text="Test">
+        <MenuItem text="Testeaza cu imaginea curenta" onAction="#onTestCurrentImage"/>
+        <MenuItem text="Testeaza cu datele de antrenare" onAction="#onTestTrainImages"/>
+        <MenuItem text="Testeaza cu alte date" onAction="#onTestAnotherImages"/>
+        <!--<SeparatorMenuItem  />-->
+    </Menu>
+    <Menu text="Panou">
+        <MenuItem text="Setari algoritm" onAction="#onShowTrainPanel"/>
+        <MenuItem text="Testare algoritm" onAction="#onShowTestPanel"/>
+    </Menu>
+</MenuBar>

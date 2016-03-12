@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import licenta.util.ContextMenuPane?>
+<ContextMenuPane xmlns:fx="http://javafx.com/fxml" fx:controller="licenta.controller.ContextMenuController">
+
+    <contextMenu>
+        <ContextMenu fx:id="_cmCnv">
+            <items>
+                <MenuItem text="Curata" onAction="#onBtnClearInput"/>
+                <MenuItem text="Import" onAction="#onBtnImport"/>
+            </items>
+        </ContextMenu>
+    </contextMenu>
+
+</ContextMenuPane>

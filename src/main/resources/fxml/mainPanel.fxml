@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+      fx:controller="licenta.controller.MainController">
+
+    <fx:include fx:id="_cnvContextMenu" source="contextMenuPanel.fxml"/>
+
+    <fx:include fx:id="_menuBar" source="menuBarPanel.fxml" VBox.vgrow="NEVER"/>
+    <StackPane fx:id="_panel" VBox.vgrow="ALWAYS">
+        <!--<fx:include fx:id="_testPanel" source="testPanel.fxml"/>-->
+        <padding>
+            <Insets bottom="10" top="10" left="10" right="10"/>
+        </padding>
+    </StackPane>
+
+
+</VBox>

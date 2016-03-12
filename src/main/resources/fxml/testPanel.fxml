@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import licenta.util.table.AutoNumberedTabeleRowsCellFactory?>
+<?import licenta.util.table.AutoNumberedTabeleRowsCellValueFactory?>
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="licenta.controller.TestController" spacing="10">
+
+    <Pane fx:id="_pCnvInput" prefHeight="550.0" prefWidth="550" styleClass="canvas" HBox.hgrow="ALWAYS">
+        <Canvas fx:id="_cnvInput"
+                onMouseClicked="#onMouseClickCnvInput"
+                onMouseDragged="#onMouseDraggedCnvInput"
+                onMousePressed="#onMousePressedCnvInput"
+        />
+    </Pane>
+
+    <TableView fx:id="_tvOutput" prefHeight="400.0" prefWidth="480" HBox.hgrow="NEVER">
+        <columns>
+            <TableColumn text="Nr. crt." prefWidth="70" sortable="false" resizable="false">
+                <cellFactory>
+                    <AutoNumberedTabeleRowsCellFactory/>
+                </cellFactory>
+
+                <cellValueFactory>
+                    <AutoNumberedTabeleRowsCellValueFactory/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Nr. clase testate" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nrOfClassesTested"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Perceptron" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="perceptronResult"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Back propagation" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="backPropagationResult"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <!--<ResultTableView backPropagationResult="" />-->
+            </FXCollections>
+        </items>
+    </TableView>
+</HBox>

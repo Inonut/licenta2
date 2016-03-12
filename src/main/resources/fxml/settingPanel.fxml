@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="531.0" prefWidth="429.0" spacing="10.0" xmlns="http://javafx.com/javafx/8"
+      fx:controller="licenta.controller.SettingController">
+    <children>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <VBox.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="10.0"/>
+            </VBox.margin>
+            <children>
+                <TitledPane animated="false" prefHeight="96.0" prefWidth="408.0" text="Locatia datelor de antremnament">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <RadioButton fx:id="_rbPathDB" layoutX="31.0" layoutY="27.0" mnemonicParsing="false"
+                                             onAction="#onRbPathDB" text="director"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+            </children>
+        </HBox>
+
+        <HBox prefHeight="165.0" prefWidth="599.0" spacing="5.0">
+            <children>
+
+                <TitledPane animated="false" text="Categorie">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="_cbFace" layoutX="49.0" layoutY="29.0" mnemonicParsing="false"
+                                          text="Fata"/>
+                                <CheckBox fx:id="_cbDigit" layoutX="49.0" layoutY="51.0" mnemonicParsing="false"
+                                          text="Cifra"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+
+                <TitledPane animated="false" text="Numar de clase">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <ChoiceBox fx:id="_cbNbClasses" layoutX="113.0" layoutY="45.0" prefHeight="25.0"
+                                           prefWidth="67.0">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <Integer fx:value="2"/>
+                                            <Integer fx:value="5"/>
+                                            <Integer fx:value="10"/>
+                                            <Integer fx:value="15"/>
+                                            <Integer fx:value="20"/>
+                                            <Integer fx:value="100"/>
+                                        </FXCollections>
+                                    </items>
+                                    <value>
+                                        <Integer fx:value="5"/>
+                                    </value>
+                                </ChoiceBox>
+                                <Label layoutX="22.0" layoutY="49.0" text="Numarul este"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+            </children>
+            <VBox.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox prefHeight="188.0" prefWidth="411.0" spacing="5.0">
+            <children>
+                <TitledPane animated="false" text="Perceptron">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="53.0" text="Epoci"/>
+                                <TextField fx:id="_tfEpochsPerceptron" layoutX="73.0" layoutY="49.0" prefHeight="25.0"
+                                           prefWidth="71.0" text="1000"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Back propagation">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextField fx:id="_tfEpochsBP" layoutX="101.0" layoutY="14.0" prefHeight="25.0"
+                                           prefWidth="68.0" text="100"/>
+                                <TextField fx:id="_tfHidden1BP" layoutX="101.0" layoutY="47.0" prefHeight="25.0"
+                                           prefWidth="69.0" text="30"/>
+                                <TextField fx:id="_tfHidden2BP" layoutX="102.0" layoutY="81.0" prefHeight="25.0"
+                                           prefWidth="68.0" text="50"/>
+                                <Label layoutX="20.0" layoutY="18.0" text="Epoci"/>
+                                <Label layoutX="12.0" layoutY="51.0" text="Strat ascuns 1"/>
+                                <Label layoutX="12.0" layoutY="85.0" text="Strat ascuns 2"/>
+                                <Label layoutX="15.0" layoutY="121.0" text="Eroarea"/>
+                                <TextField fx:id="_tfErrorBP" layoutX="102.0" layoutY="117.0" prefHeight="25.0"
+                                           prefWidth="68.0" text="0.01"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+            </children>
+            <VBox.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+            </VBox.margin>
+        </HBox>
+        <Button mnemonicParsing="false" onAction="#onBtnStartTrain" text="Antreneaza">
+            <VBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="5.0"/>
+            </VBox.margin>
+        </Button>
+    </children>
+</VBox>
