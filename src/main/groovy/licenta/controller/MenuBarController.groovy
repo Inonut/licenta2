@@ -8,16 +8,16 @@ import licenta.algorithm.classification.impl.BackPropagationMethod
 import licenta.algorithm.classification.impl.PerceptronMethod
 import licenta.domain.logic.*
 import licenta.exception.BussinesException
-import licenta.util.BlockUI
-import licenta.util.Concurrency
-import licenta.util.Util
+import licenta.utils.BlockUI
+import licenta.utils.Concurrency
+import licenta.utils.Util
 import org.apache.commons.io.FilenameUtils
 
 import javax.imageio.ImageIO
 import java.util.concurrent.CountDownLatch
 
-import static licenta.util.BussinesConstants.SETTINGS_PANEL
-import static licenta.util.BussinesConstants.TEST_PANEL
+import static licenta.utils.BussinesConstants.SETTINGS_PANEL
+import static licenta.utils.BussinesConstants.TEST_PANEL
 
 /**
  * Created by Dragos on 20.02.2016.

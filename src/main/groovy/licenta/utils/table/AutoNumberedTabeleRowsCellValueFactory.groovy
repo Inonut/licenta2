@@ -1,4 +1,4 @@
-package licenta.util.table
+package licenta.utils.table
 
 import javafx.beans.property.ReadOnlyObjectWrapper
 import javafx.beans.value.ObservableValue

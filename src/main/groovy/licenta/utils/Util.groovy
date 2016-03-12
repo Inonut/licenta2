@@ -1,9 +1,9 @@
-package licenta.util
+package licenta.utils
 
 import javafx.scene.control.Alert
 import javafx.scene.image.Image
 import licenta.domain.logic.FileImage
-import licenta.util.image.impl.ImageFormatter
+import licenta.utils.image.impl.ImageFormatter
 import org.apache.commons.io.FilenameUtils
 
 import java.nio.file.Files
@@ -11,7 +11,7 @@ import java.nio.file.Path
 
 import static javafx.scene.control.Alert.AlertType.CONFIRMATION
 import static javafx.scene.control.Alert.AlertType.ERROR
-import static licenta.util.BussinesConstants.*
+import static licenta.utils.BussinesConstants.*
 
 /**
  * Created by Dragos on 08.02.2016.

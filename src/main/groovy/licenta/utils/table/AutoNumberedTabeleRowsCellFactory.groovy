@@ -1,4 +1,4 @@
-package licenta.util.table
+package licenta.utils.table
 
 import javafx.scene.control.TableCell
 import javafx.scene.control.TableColumn

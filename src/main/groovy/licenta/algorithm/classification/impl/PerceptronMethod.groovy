@@ -5,8 +5,8 @@ import licenta.domain.logic.ClassificationData
 import licenta.domain.logic.DataPerceptron
 import licenta.domain.logic.PerceptronSettings
 import licenta.domain.logic.Settings
-import licenta.util.BussinesConstants
-import licenta.util.Util
+import licenta.utils.BussinesConstants
+import licenta.utils.Util
 
 public class PerceptronMethod implements Classification {
 

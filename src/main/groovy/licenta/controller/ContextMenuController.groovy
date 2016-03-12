@@ -4,8 +4,8 @@ import javafx.scene.control.ContextMenu
 import licenta.action.Action
 import licenta.domain.logic.GeneralModel
 import licenta.exception.BussinesException
-import licenta.util.BlockUI
-import licenta.util.image.impl.ImageFormatter
+import licenta.utils.BlockUI
+import licenta.utils.image.impl.ImageFormatter
 
 /**
  * Created by Dragos on 20.02.2016.

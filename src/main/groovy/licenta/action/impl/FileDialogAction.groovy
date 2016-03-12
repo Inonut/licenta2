@@ -5,8 +5,8 @@ import javafx.stage.FileChooser
 import licenta.action.Action
 
 import static javafx.stage.FileChooser.ExtensionFilter
-import static licenta.util.BussinesConstants.DEFAULT_DIR
-import static licenta.util.BussinesConstants.IMAGES_TYPE
+import static licenta.utils.BussinesConstants.DEFAULT_DIR
+import static licenta.utils.BussinesConstants.IMAGES_TYPE
 
 /**
  * Created by Dragos on 20.02.2016.

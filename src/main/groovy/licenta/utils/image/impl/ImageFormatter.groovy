@@ -1,12 +1,12 @@
-package licenta.util.image.impl
+package licenta.utils.image.impl
 
 import javafx.geometry.Rectangle2D
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.PixelFormat
 import javafx.scene.image.WritableImage
-import licenta.util.Concurrency
-import licenta.util.image.ImageAction
+import licenta.utils.Concurrency
+import licenta.utils.image.ImageAction
 
 /**
  * Created by Dragos on 10.02.2016.

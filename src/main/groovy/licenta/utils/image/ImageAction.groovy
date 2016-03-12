@@ -1,8 +1,8 @@
-package licenta.util.image
+package licenta.utils.image
 
 import javafx.scene.image.Image
 
-import static licenta.util.BussinesConstants.IMAGES_TYPE;
+import static licenta.utils.BussinesConstants.IMAGES_TYPE;
 
 /**
  * Created by Dragos on 10.02.2016.

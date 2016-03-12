@@ -1,4 +1,4 @@
-package licenta.util
+package licenta.utils
 
 import javafx.scene.control.ButtonType
 

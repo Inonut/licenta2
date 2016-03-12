@@ -1,4 +1,4 @@
-package licenta.util
+package licenta.utils
 
 import com.sun.javafx.stage.StageHelper
 import javafx.beans.property.SimpleDoubleProperty
