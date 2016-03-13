@@ -9,10 +9,6 @@ import java.util.concurrent.CountDownLatch
  */
 public class Concurrency {
 
-    /*private static final ExecutorService executorService = Executors.newFixedThreadPool(10, {r ->
-        return Thread.start { r.run(); };
-    });*/
-
     public Concurrency() {
     }
 
@@ -41,8 +37,6 @@ public class Concurrency {
     }
 
     public synchronized void setExecute(Runnable run) {
-//        executorService.execute(run);
-
         Thread.start { run.run(); };
     }
 }
