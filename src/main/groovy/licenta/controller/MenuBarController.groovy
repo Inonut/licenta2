@@ -269,7 +269,8 @@ public class MenuBarController implements Controller {
 
             if (file != null) {
 
-                def trainData = new ArrayList<>()
+                def fileImages = new ArrayList<FileImage>()
+                def trainData = new ArrayList<ClassificationData>()
                 def perceptronData = new ArrayList()
                 def backPropagationData = new HashMap()
 
@@ -280,6 +281,12 @@ public class MenuBarController implements Controller {
                         Util.toDouble(it.toString())
                     }))
                 };
+
+                fileImages = xml.traintData.element.collect { elem ->
+                    elem.data.id.collect { id ->
+                        new FileImage(name: elem.name, semnificativeScaledImageTransformated: Util.toDouble(id.toString()))
+                    }
+                }.flatten()
 
 
                 perceptronData = trainData.collect { new DataPerceptron(name: it.name, data: it.data) }
@@ -311,7 +318,7 @@ public class MenuBarController implements Controller {
 
                 Action.getInstance().getGeneralModel().setPerceptronClassification(new PerceptronMethod(data: perceptronData))
                 Action.getInstance().getGeneralModel().setBackPropagationClassification(new BackPropagationMethod(data: trainData, layers: backPropagationData.network))
-                Action.getInstance().getGeneralModel().setTrainData(trainData)
+                Action.getInstance().getGeneralModel().setTrainData(fileImages)
             }
 
         }

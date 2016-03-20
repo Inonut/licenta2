@@ -9,10 +9,8 @@ import licenta.action.impl.FileDialogAction
 import licenta.action.impl.LoadFXMLPanelAction
 import licenta.algorithm.classification.impl.BackPropagationMethod
 import licenta.algorithm.classification.impl.PerceptronMethod
-import licenta.exception.BussinesException
+import licenta.exception.ExceptionHandler
 import licenta.util.BlockUI
-import licenta.util.Concurrency
-import licenta.util.Util
 
 import static licenta.util.BussinesConstants.*
 
@@ -43,18 +41,7 @@ public class Main extends Application {
         }
 
         Thread.setDefaultUncaughtExceptionHandler({ Thread t, Throwable e ->
-             if (e instanceof BussinesException) {
-                 def bussinesException = e;
-
-                 Concurrency.callAsync {
-                     def buttonType = Util.errorMessage(bussinesException.message).showAndWait();
-                     if (buttonType != null) {
-                         bussinesException.runAfterOk();
-                     }
-                 }.get();
-             } else {
-                 e.printStackTrace();
-             }
+            ExceptionHandler.handle(e)
          });
 
 

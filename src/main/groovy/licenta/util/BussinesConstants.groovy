@@ -6,6 +6,7 @@ import javafx.scene.Scene
 import javafx.scene.canvas.Canvas
 import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
+import javafx.scene.control.TableView
 import javafx.scene.image.ImageView
 import javafx.scene.layout.Pane
 import javafx.scene.layout.Region
@@ -37,5 +38,5 @@ public class BussinesConstants {
     public static final String DEFAULT_DIR = "/images";
 
     public static
-    final List FX_ELEM = [Stage, Scene, Pane, VBox, SimpleDoubleProperty, ImageView, Alert, ImageFormatter, Node, Parent, StackPane, Region, Canvas]
+    final List FX_ELEM = [Stage, Scene, Pane, VBox, SimpleDoubleProperty, ImageView, Alert, ImageFormatter, Node, Parent, StackPane, Region, Canvas, TableView]
 }

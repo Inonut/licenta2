@@ -1,5 +1,7 @@
 package licenta.util
 
+import licenta.exception.ExceptionHandler
+
 import java.util.concurrent.*
 
 /**
@@ -25,7 +27,7 @@ class Concurrency {
             try {
                 closure(*args)
             } catch (Exception e) {
-                e.printStackTrace()
+                ExceptionHandler.handle(e)
             }
         } as Callable)
 

@@ -67,7 +67,7 @@ class ImageFormatter extends ImageView {
         image.pixelReader.getPixels(0, 0, width, height, pixelFormat, pixels, 0, width);
 
 
-        return pixels.each { pixel -> closure ? closure(pixel) : pixel }.collect() as int[]
+        return pixels.collect { pixel -> closure ? closure(pixel) : pixel } as int[]
     }
 
     synchronized ImageFormatter convertToGray() {
