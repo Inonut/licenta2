@@ -8,7 +8,9 @@ import licenta.util.Util
  */
 class ExceptionHandler {
 
-    def static synchronized handle(Throwable e) {
+    private ExceptionHandler() {}
+
+    public static synchronized void handle(Throwable e) {
         if (e instanceof BussinesException) {
             def bussinesException = e;
 
