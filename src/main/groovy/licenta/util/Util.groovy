@@ -119,7 +119,7 @@ public class Util {
             it.semnificativeImage = imageAction.getSemnificativeImage().image;
             it.semnificativeScaledImage = imageAction.scalingImage(WIDTH, HEIGHT).image;
             it.semnificativeScaledImageTransformated = imageAction.convertImageToArray {
-                (it >> 16) & 0xFF
+                (it & 0xFF) % 255
             } as double[];
         }
         return fileImage
