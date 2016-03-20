@@ -2,6 +2,8 @@ package licenta.util.image
 
 import javafx.geometry.Rectangle2D
 import javafx.scene.image.*
+import licenta.util.BussinesConstants
+import org.apache.commons.io.FilenameUtils
 
 /**
  * Created by Dragos on 14.03.2016.
@@ -16,11 +18,20 @@ class ImageFormatter extends ImageView {
 
     synchronized static ImageFormatter of(File file) {
 
+        if (!isImage(file)) {
+            return;
+        }
         def inputStream = new FileInputStream(file)
         def image = new Image(inputStream)
         inputStream.close()
 
         of(image)
+    }
+
+    synchronized static isImage(File file) {
+        file.isFile() && (BussinesConstants.IMAGES_TYPE as List).stream().anyMatch {
+            it.endsWith(FilenameUtils.getExtension(file.getAbsolutePath()))
+        }
     }
 
     synchronized ImageFormatter scalingImage(double width, double height) {

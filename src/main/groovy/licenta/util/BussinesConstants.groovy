@@ -1,13 +1,18 @@
 package licenta.util
 
 import javafx.beans.property.SimpleDoubleProperty
+import javafx.scene.Parent
 import javafx.scene.Scene
+import javafx.scene.canvas.Canvas
 import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
 import javafx.scene.image.ImageView
 import javafx.scene.layout.Pane
+import javafx.scene.layout.Region
+import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
+import licenta.util.image.ImageFormatter
 
 import static javafx.scene.control.ButtonBar.ButtonData.*
 
@@ -31,5 +36,6 @@ public class BussinesConstants {
 
     public static final String DEFAULT_DIR = "/images";
 
-    public static final List FX_ELEM = [Stage, Scene, Pane, VBox, SimpleDoubleProperty, ImageView, Alert]
+    public static
+    final List FX_ELEM = [Stage, Scene, Pane, VBox, SimpleDoubleProperty, ImageView, Alert, ImageFormatter, Node, Parent, StackPane, Region, Canvas]
 }

@@ -4,7 +4,7 @@ import javafx.scene.control.MenuBar
 import javafx.scene.layout.StackPane
 import licenta.action.Action
 import licenta.domain.logic.GeneralModel
-import licenta.utils.ContextMenuPane
+import licenta.util.ContextMenuPane
 
 /**
  * Created by Dragos on 20.02.2016.

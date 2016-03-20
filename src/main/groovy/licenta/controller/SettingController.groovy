@@ -1,5 +1,6 @@
 package licenta.controller
 
+import com.sun.javafx.application.PlatformImpl
 import javafx.scene.control.CheckBox
 import javafx.scene.control.ChoiceBox
 import javafx.scene.control.RadioButton
@@ -11,14 +12,13 @@ import licenta.domain.logic.GeneralModel
 import licenta.domain.logic.PerceptronSettings
 import licenta.domain.logic.Settings
 import licenta.exception.BussinesException
-import licenta.utils.BlockUI
-import licenta.utils.Concurrency
-import licenta.utils.Util
+import licenta.util.BlockUI
+import licenta.util.Concurrency
+import licenta.util.Util
 
 import java.nio.file.Paths
-import java.util.concurrent.CountDownLatch
 
-import static licenta.utils.BussinesConstants.TEST_PANEL;
+import static licenta.util.BussinesConstants.TEST_PANEL
 
 /**
  * Created by Dragos on 20.02.2016.
@@ -148,25 +148,24 @@ public class SettingController implements Controller {
             };
 
 
-            def countDownLatch = new CountDownLatch(2);
-            new Concurrency().execute = {
+            def futurePerceptron = Concurrency.callAsync {
                 _model.perceptronClassification.settingData(classificationDatas);
                 _model.perceptronClassification.train(settings);
-                countDownLatch.countDown();
             };
 
-            new Concurrency().execute = {
+            def futureBackPropagation = Concurrency.callAsync {
                 _model.backPropagationClassification.settingData(classificationDatas);
                 _model.backPropagationClassification.train(settings);
-                countDownLatch.countDown();
             };
 
-            countDownLatch.await();
+            futureBackPropagation.get()
+            futurePerceptron.get()
 
-            new Concurrency().runNow = {
+            PlatformImpl.runAndWait {
                 _model.panel.children.clear();
                 _model.panel.children.add(_model.getFxLoader().loadFXML(getClass().getResource(TEST_PANEL)));
-            };
+            }
+
         };
 
     }

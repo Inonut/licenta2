@@ -26,7 +26,7 @@ public class LoadFXMLPanelAction extends Action {
             def parent = fxLoad.load();
             def controller = fxLoad.controller
             map.put(resource, new Pair<>(parent, controller));
-            return parent as Parent;
+            return parent;
         }
 
     }

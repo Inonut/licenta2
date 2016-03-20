@@ -2,11 +2,19 @@ package licenta
 
 import com.sun.javafx.application.PlatformImpl
 import javafx.application.Application
+import javafx.scene.Scene
 import javafx.stage.Stage
-import licenta.util.ImageFormatter
+import licenta.action.Action
+import licenta.action.impl.FileDialogAction
+import licenta.action.impl.LoadFXMLPanelAction
+import licenta.algorithm.classification.impl.BackPropagationMethod
+import licenta.algorithm.classification.impl.PerceptronMethod
+import licenta.exception.BussinesException
+import licenta.util.BlockUI
+import licenta.util.Concurrency
 import licenta.util.Util
 
-import static licenta.util.BussinesConstants.FX_ELEM
+import static licenta.util.BussinesConstants.*
 
 /**
  * Created by Dragos on 19.02.2016.
@@ -18,11 +26,6 @@ public class Main extends Application {
 
     }
 
-    enum Type {
-        RESPONSE, REQUEST
-    }
-
-
     @Override
     void start(Stage primaryStage) throws Exception {
 
@@ -31,6 +34,7 @@ public class Main extends Application {
                 def m = delegate.metaClass.getMetaMethod(name, *args)
                 def result = null
                 def that = delegate
+                //println "call $name from $it"
                 PlatformImpl.runAndWait {
                     result = m.invoke(that, *args)
                 }
@@ -38,53 +42,16 @@ public class Main extends Application {
             }
         }
 
-        Thread.start {
-            try {
-                def image = ImageFormatter.of(new File("C:\\Users\\Dragos\\Pictures\\Camera Roll\\Untitled1.png")).convertToGray()
-                def file = new File("C:\\Users\\Dragos\\Desktop\\test.png");
-                Util.writeImage(image, file)
-
-                println "--------"
-            } catch (Exception e) {
-                e.printStackTrace()
-            }
-
-        }
-
-        /*CountDownLatch doneLatch = new CountDownLatch(1);
-        Thread.start {
-
-            PlatformImpl.runLater({
-                println "sdsdsdsd"
-                doneLatch.countDown()
-            })
-
-        }
-
-        Thread.start {
-            doneLatch.await()
-            println "----"
-        }*/
-
-        /* Thread.start {
-             PlatformImpl.runAndWait({
-                 println "sdsdsdsd"
-
-             })
-             println "----"
-         }.join()*/
-
-        /* Thread.setDefaultUncaughtExceptionHandler({ Thread t, Throwable e ->
+        Thread.setDefaultUncaughtExceptionHandler({ Thread t, Throwable e ->
              if (e instanceof BussinesException) {
                  def bussinesException = e;
 
-                 def concurrency = new Concurrency();
-                 concurrency.runNow = {
+                 Concurrency.callAsync {
                      def buttonType = Util.errorMessage(bussinesException.message).showAndWait();
                      if (buttonType != null) {
                          bussinesException.runAfterOk();
                      }
-                 };
+                 }.get();
              } else {
                  e.printStackTrace();
              }
@@ -110,14 +77,12 @@ public class Main extends Application {
                  it.fileDialog = sileDialogAction;
              };
 
-             new Concurrency().runLater = {
-                 primaryStage.with {
-                     it.scene = scene;
-                     it.show();
-                 };
-             }
 
-         }*/
+             primaryStage.with {
+                 it.scene = scene;
+                 it.show();
+             }
+         }
 
     }
 }

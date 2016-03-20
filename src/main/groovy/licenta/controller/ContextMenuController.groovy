@@ -3,9 +3,8 @@ package licenta.controller
 import javafx.scene.control.ContextMenu
 import licenta.action.Action
 import licenta.domain.logic.GeneralModel
-import licenta.exception.BussinesException
-import licenta.utils.BlockUI
-import licenta.utils.image.impl.ImageFormatter
+import licenta.util.BlockUI
+import licenta.util.image.ImageFormatter
 
 /**
  * Created by Dragos on 20.02.2016.
@@ -37,17 +36,12 @@ public class ContextMenuController implements Controller {
         def file = _model.fileDialog.getFileChooser();
 
         if (file != null) {
-            def originalImage;
-
             BlockUI.execute = {
-                originalImage = ImageFormatter.convertFileToImage(file);
-                if (originalImage != null) {
-                    def graphicsContext = cnvInput.graphicsContext2D;
-                    def scaledImage = new ImageFormatter().scalingImage(originalImage, cnvInput.width, cnvInput.height);
-                    graphicsContext.drawImage(scaledImage, 0, 0);
-                } else {
-                    throw new BussinesException("Fisierul incarcat nu este o imagine.");
-                }
+
+                def graphicsContext = cnvInput.graphicsContext2D;
+                def scaledImage = ImageFormatter.of(file).scalingImage(cnvInput.width, cnvInput.height).image;
+                graphicsContext.drawImage(scaledImage, 0, 0);
+
             };
         }
     }

@@ -2,8 +2,8 @@ package licenta.algorithm.classification.impl
 
 import licenta.algorithm.classification.Classification
 import licenta.domain.logic.*
-import licenta.utils.BussinesConstants
-import licenta.utils.Util
+import licenta.util.BussinesConstants
+import licenta.util.Util
 
 public class BackPropagationMethod implements Classification {
 

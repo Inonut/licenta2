@@ -1,5 +1,6 @@
 package licenta.controller
 
+import com.sun.javafx.application.PlatformImpl
 import groovy.xml.MarkupBuilder
 import javafx.embed.swing.SwingFXUtils
 import javafx.event.ActionEvent
@@ -8,16 +9,15 @@ import licenta.algorithm.classification.impl.BackPropagationMethod
 import licenta.algorithm.classification.impl.PerceptronMethod
 import licenta.domain.logic.*
 import licenta.exception.BussinesException
-import licenta.utils.BlockUI
-import licenta.utils.Concurrency
-import licenta.utils.Util
+import licenta.util.BlockUI
+import licenta.util.Concurrency
+import licenta.util.Util
 import org.apache.commons.io.FilenameUtils
 
 import javax.imageio.ImageIO
-import java.util.concurrent.CountDownLatch
 
-import static licenta.utils.BussinesConstants.SETTINGS_PANEL
-import static licenta.utils.BussinesConstants.TEST_PANEL
+import static licenta.util.BussinesConstants.SETTINGS_PANEL
+import static licenta.util.BussinesConstants.TEST_PANEL
 
 /**
  * Created by Dragos on 20.02.2016.
@@ -39,7 +39,7 @@ public class MenuBarController implements Controller {
             def image;
 
             BlockUI.execute = {
-                new Concurrency().runNow = { image = _model.mainPanelCnvInput.snapshot(null, null) };
+                image = _model.mainPanelCnvInput.snapshot(null, null)
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), FilenameUtils.getExtension(file.absolutePath), file);
             };
         }
@@ -50,10 +50,8 @@ public class MenuBarController implements Controller {
         def file = _model.fileDialog.saveFileChooser();
 
         if (file != null) {
-            def originalImage;
-
             BlockUI.execute = {
-                new Concurrency().runNow = { originalImage = _model.mainPanelCnvInput.snapshot(null, null) };
+                def originalImage = _model.mainPanelCnvInput.snapshot(null, null)
                 def fileImage = Util.prepareFileImage(originalImage)
 
                 ImageIO.write(SwingFXUtils.fromFXImage(fileImage.semnificativeScaledImage, null), FilenameUtils.getExtension(file.absolutePath), file);
@@ -63,7 +61,7 @@ public class MenuBarController implements Controller {
 
     public void onShowTrainPanel() {
         BlockUI.execute = {
-            new Concurrency().runNow = {
+            PlatformImpl.runAndWait {
                 _model.panel.children.clear();
                 _model.panel.children.add(_model.getFxLoader().loadFXML(getClass().getResource(SETTINGS_PANEL)));
             }
@@ -73,7 +71,7 @@ public class MenuBarController implements Controller {
 
     public void onShowTestPanel() {
         BlockUI.execute = {
-            new Concurrency().runNow = {
+            PlatformImpl.runAndWait {
                 _model.panel.children.clear();
                 _model.panel.children.add(_model.getFxLoader().loadFXML(getClass().getResource(TEST_PANEL)));
             }
@@ -101,22 +99,21 @@ public class MenuBarController implements Controller {
                 def originalImage;
                 def fileImage;
 
-                new Concurrency().runNow = { originalImage = _model.mainPanelCnvInput.snapshot(null, null) };
+                originalImage = _model.mainPanelCnvInput.snapshot(null, null)
                 fileImage = Util.prepareFileImage(originalImage)
 
-                def countDownLatch = new CountDownLatch(2);
                 def classificationDataPerceptron = new ClassificationData();
-                new Concurrency().execute = {
+                def futurePerceptron = Concurrency.callAsync {
                     classificationDataPerceptron = _model.perceptronClassification.recognize(fileImage.semnificativeScaledImageTransformated);
-                    countDownLatch.countDown();
                 };
 
                 def classificationDataBP = new ClassificationData();
-                new Concurrency().execute = {
+                def futureBackPropagation = Concurrency.callAsync {
                     classificationDataBP = _model.backPropagationClassification.recognize(fileImage.semnificativeScaledImageTransformated);
-                    countDownLatch.countDown();
                 };
-                countDownLatch.await();
+
+                futurePerceptron.get()
+                futureBackPropagation.get()
 
                 _model.mainPanelTableResult.items.add(new ResultTableView(1, classificationDataPerceptron.name, classificationDataBP.name));
             } else {
@@ -153,19 +150,18 @@ public class MenuBarController implements Controller {
 
                     def semnificativeScaledImageTransformated = fileImage.semnificativeScaledImageTransformated;
 
-                    def countDownLatch = new CountDownLatch(2);
                     def classificationDataPerceptron = new ClassificationData();
-                    new Concurrency().execute = {
+                    def futurePerceptron = Concurrency.callAsync {
                         classificationDataPerceptron = _model.perceptronClassification.recognize(semnificativeScaledImageTransformated);
-                        countDownLatch.countDown();
                     };
 
                     def classificationDataBP = new ClassificationData();
-                    new Concurrency().execute = {
+                    def futureBackPropagation = Concurrency.callAsync {
                         classificationDataBP = _model.backPropagationClassification.recognize(semnificativeScaledImageTransformated);
-                        countDownLatch.countDown();
                     };
-                    countDownLatch.await();
+
+                    futurePerceptron.get()
+                    futureBackPropagation.get()
 
                     if (fileImage.name.contains(classificationDataPerceptron.name)) {
                         procentPerceptron++;
@@ -189,9 +185,11 @@ public class MenuBarController implements Controller {
             if (_model.trainData != null) {
 
                 def file;
-                new Concurrency().runNow = {
+                PlatformImpl.runAndWait {
                     file = _model.fileDialog.saveFileChooser();
                 }
+
+
 
                 if (file != null) {
 
@@ -263,9 +261,11 @@ public class MenuBarController implements Controller {
 
         BlockUI.execute = {
             def file;
-            new Concurrency().runNow = {
+            PlatformImpl.runAndWait {
                 file = _model.fileDialog.fileChooser;
             }
+
+
 
             if (file != null) {
 

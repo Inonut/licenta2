@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
-<?import licenta.utils.ContextMenuPane?>
+<?import licenta.util.ContextMenuPane?>
 <ContextMenuPane xmlns:fx="http://javafx.com/fxml" fx:controller="licenta.controller.ContextMenuController">
 
     <contextMenu>
