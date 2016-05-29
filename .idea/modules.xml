@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/licenta.iml" filepath="$PROJECT_DIR$/licenta.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/licenta.iml" filepath="$PROJECT_DIR$/.idea/modules/licenta.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/licenta_main.iml" filepath="$PROJECT_DIR$/.idea/modules/licenta_main.iml" group="licenta" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/licenta_test.iml" filepath="$PROJECT_DIR$/.idea/modules/licenta_test.iml" group="licenta" />
     </modules>
   </component>
 </project>
