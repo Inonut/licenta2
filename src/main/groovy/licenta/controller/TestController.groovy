@@ -35,7 +35,7 @@ public class TestController implements Controller {
             it.widthProperty().bind _pCnvInput.widthProperty();
             it.heightProperty().bind _pCnvInput.heightProperty();
 
-            it.graphicsContext2D.lineWidth = 3;
+            it.graphicsContext2D.lineWidth = 9;
         }
     }
 
