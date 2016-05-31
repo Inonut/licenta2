@@ -78,7 +78,7 @@ public class TestController implements Controller {
     public void click_onSavePredef(ActionEvent actionEvent) {
         _tfName.text = _tfName.text.substring(0,_tfName.text.lastIndexOf('_'))+ "_${++Integer.parseInt(_tfName.text.substring(_tfName.text.lastIndexOf('_')+1))}"
 
-        def file = new File("C:\\Users\\Dragos\\IdeaProjects\\licenta2\\src\\main\\resources\\images2\\${_tfName.getText()}.png")
+        def file = new File("C:\\Users\\Dragos\\IdeaProjects\\licenta2\\src\\main\\resources\\imaginiTest\\${_tfName.getText()}.png")
 
         if (file != null) {
             def image;
