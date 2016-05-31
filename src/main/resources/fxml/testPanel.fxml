@@ -51,4 +51,7 @@
             </FXCollections>
         </items>
     </TableView>
+
+    <!--<TextField fx:id="_tfName"/>-->
+    <!--<Button text="Save predef" onAction="#click_onSavePredef"/>-->
 </HBox>

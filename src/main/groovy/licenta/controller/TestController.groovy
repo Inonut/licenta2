@@ -1,11 +1,18 @@
 package licenta.controller
 
+import javafx.embed.swing.SwingFXUtils
+import javafx.event.ActionEvent
 import javafx.scene.canvas.Canvas
 import javafx.scene.control.TableView
+import javafx.scene.control.TextField
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
 import licenta.action.Action
 import licenta.domain.logic.GeneralModel
+import licenta.util.BlockUI
+import org.apache.commons.io.FilenameUtils
+
+import javax.imageio.ImageIO
 
 import static javafx.scene.input.MouseButton.PRIMARY
 import static javafx.scene.input.MouseButton.SECONDARY
@@ -20,6 +27,7 @@ public class TestController implements Controller {
     public TableView _tvOutput;
 
     private GeneralModel _model;
+    public TextField _tfName ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -35,7 +43,7 @@ public class TestController implements Controller {
             it.widthProperty().bind _pCnvInput.widthProperty();
             it.heightProperty().bind _pCnvInput.heightProperty();
 
-            it.graphicsContext2D.lineWidth = 9;
+            it.graphicsContext2D.lineWidth = 21;
         }
     }
 
@@ -63,6 +71,22 @@ public class TestController implements Controller {
     public void onMouseClickCnvInput(MouseEvent event) {
         if (event.button == SECONDARY) {
             _model.contextMenuCmCnv.show this._cnvInput, event.screenX, event.screenY;
+        }
+    }
+
+    private int id;
+    public void click_onSavePredef(ActionEvent actionEvent) {
+        _tfName.text = _tfName.text.substring(0,_tfName.text.lastIndexOf('_'))+ "_${++Integer.parseInt(_tfName.text.substring(_tfName.text.lastIndexOf('_')+1))}"
+
+        def file = new File("C:\\Users\\Dragos\\IdeaProjects\\licenta2\\src\\main\\resources\\images2\\${_tfName.getText()}.png")
+
+        if (file != null) {
+            def image;
+
+            BlockUI.execute = {
+                image = _model.mainPanelCnvInput.snapshot(null, null)
+                ImageIO.write(SwingFXUtils.fromFXImage(image, null), FilenameUtils.getExtension(file.absolutePath), file);
+            };
         }
     }
 }
