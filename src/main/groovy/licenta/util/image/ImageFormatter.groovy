@@ -5,6 +5,8 @@ import javafx.scene.image.*
 import licenta.util.BussinesConstants
 import org.apache.commons.io.FilenameUtils
 
+import javax.imageio.IIOException
+
 /**
  * Created by Dragos on 14.03.2016.
  */
@@ -21,8 +23,14 @@ class ImageFormatter extends ImageView {
         if (!isImage(file)) {
             return;
         }
+
         def inputStream = new FileInputStream(file)
-        def image = new Image(inputStream)
+        def image = null
+        try{
+            image = PGMTest.readImage(inputStream)
+        } catch (Exception e) {
+            image = new Image(inputStream)
+        }
         inputStream.close()
 
         of(image)

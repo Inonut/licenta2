@@ -29,13 +29,13 @@ public class BussinesConstants {
     public static final ButtonType BUTTON_NO = new ButtonType("Nu", NO); //ButtonBar.ButtonData.CANCEL_CLOSE
     public static final ButtonType BUTTON_CANCEL_CLOSE = new ButtonType("Am inteles", CANCEL_CLOSE);
 
-    public static final String[] IMAGES_TYPE = ["*.png", "*.jpg"];
+    public static final String[] IMAGES_TYPE = ["*.png", "*.jpg", "*.pgm"];
     public static final String MAIN_PANEL = "/fxml/mainPanel.fxml";
     public static final String BASE_CSS = "/css/base.css";
     public static final String TEST_PANEL = "/fxml/testPanel.fxml";
     public static final String SETTINGS_PANEL = "/fxml/settingPanel.fxml";
 
-    public static final String DEFAULT_DIR = "/images";
+    public static final String DEFAULT_DIR = "/";
 
     public static
     final List FX_ELEM = [Stage, Scene, Pane, VBox, SimpleDoubleProperty, ImageView, Alert, ImageFormatter, Node, Parent, StackPane, Region, Canvas, TableView]
