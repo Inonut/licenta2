@@ -296,7 +296,7 @@ public class MenuBarController implements Controller {
                     }.collect()[0].weight = Util.toDouble(elem.weight.toString())
                 };
 
-                Util.showTrainData(trainData[5].data[0] as List, 100)
+                //Util.showTrainData(trainData[5].data[0] as List, 100)
                 backPropagationData.trainData = trainData
                 backPropagationData.network = xml.backPropagation.layer.collect {
                     it.children().collect {

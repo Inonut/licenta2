@@ -56,7 +56,10 @@
                                             <Integer fx:value="10"/>
                                             <Integer fx:value="15"/>
                                             <Integer fx:value="20"/>
+                                            <Integer fx:value="50"/>
                                             <Integer fx:value="100"/>
+                                            <Integer fx:value="150"/>
+                                            <Integer fx:value="200"/>
                                         </FXCollections>
                                     </items>
                                     <value>

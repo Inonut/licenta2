@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import licenta.util.table.AutoNumberedTabeleRowsCellFactory?>
 <?import licenta.util.table.AutoNumberedTabeleRowsCellValueFactory?>
+<?import javafx.scene.layout.VBox?>
 <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="licenta.controller.TestController" spacing="10">
 
     <Pane fx:id="_pCnvInput" prefHeight="550.0" prefWidth="550" styleClass="canvas" HBox.hgrow="ALWAYS">

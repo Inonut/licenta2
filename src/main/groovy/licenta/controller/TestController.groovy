@@ -86,7 +86,16 @@ public class TestController implements Controller {
             BlockUI.execute = {
                 image = _model.mainPanelCnvInput.snapshot(null, null)
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), FilenameUtils.getExtension(file.absolutePath), file);
+
+
+                def cnvInput = _model.mainPanelCnvInput;
+
+                cnvInput.graphicsContext2D.with {
+                    it.clearRect 0, 0, cnvInput.width, cnvInput.height;
+                };
             };
+
+
         }
     }
 }
