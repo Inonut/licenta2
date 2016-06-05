@@ -27,7 +27,7 @@ class ImageFormatter extends ImageView {
         def inputStream = new FileInputStream(file)
         def image = null
         try{
-            image = PGMTest.readImage(inputStream)
+            image = PGMTest.readImage(file)
         } catch (Exception e) {
             image = new Image(inputStream)
         }

@@ -79,7 +79,7 @@ public class BackPropagationMethod implements Classification {
             Layer[] layer1 = layers.get(k - 1);
             for (int i = 0; i < layer2.length; i++) {
                 for (int j = 0; j < layer1.length; j++) {
-                    layer1[j].getWeights()[i] += 0.2 * layer2[i].getError() * layer1[j].getOutput();
+                    layer1[j].getWeights()[i] += 0.01 * layer2[i].getError() * layer1[j].getOutput();
                 }
             }
         }

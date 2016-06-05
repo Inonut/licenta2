@@ -3,9 +3,7 @@ package licenta.util.image;
 /**
  * Created by Dragos on 6/3/2016.
  */
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 import javax.imageio.IIOException;
 
@@ -27,7 +25,7 @@ public class PGMTest extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Label root = new Label();
+        /*Label root = new Label();
         Image image;
 
         long start = System.currentTimeMillis();
@@ -42,18 +40,13 @@ public class PGMTest extends Application {
         root.setGraphic(new ImageView(image));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();*/
     }
 
-    private static Image readImage(final InputStream input) throws IOException {
+    private static Image readImage(final File input) throws IOException {
         // First parse PGM header
-        DataInputStream dataInputStream = new DataInputStream(input);
+        DataInputStream dataInputStream = new DataInputStream(new FileInputStream(input));
         PNMHeader header = PNMHeader.parse(dataInputStream);
-
-        if(header == null){
-            dataInputStream.close();
-            return new Image(input);
-        }
 
         WritableImage image = new WritableImage(header.getWidth(), header.getHeight());
         PixelWriter pixelWriter = image.getPixelWriter();
@@ -122,7 +115,7 @@ public class PGMTest extends Application {
             short type = input.readShort();
 
             if (type != PGM) {
-                return null;
+                throw new IIOException("Not PGN");
             }
 
             int width = 0;

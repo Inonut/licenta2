@@ -85,7 +85,7 @@ public class Util {
 
             fileImage.with {
                 it.name = elem["name"]
-                it.id = elem["id"] ? elem["id"] as int : -1
+                it.id = elem["id"] ? (elem["id"] - ")" - "(") as int : -1
                 it.typeImage = elem["type"]
                 it.location = elem["file"] as File
 
