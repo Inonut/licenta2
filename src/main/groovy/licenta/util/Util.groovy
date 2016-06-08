@@ -121,6 +121,7 @@ public class Util {
             it.semnificativeScaledImageTransformated = imageAction.convertImageToArray {
                 (it & 0xFF) % 255
             } as double[];
+            //it.semnificativeScaledImageTransformated = it.semnificativeScaledImageTransformated.collect {it/1000.0}
         }
         return fileImage
     }

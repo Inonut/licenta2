@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="licenta_main:jar">
+    <output-path>$PROJECT_DIR$/build/classes/artifacts/licenta_main_jar</output-path>
+    <root id="archive" name="licenta_main.jar">
+      <element id="module-output" name="licenta_main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-io/1.3.2/b6dde38349ba9bb5e6ea6320531eae969985dae5/commons-io-1.3.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.gpars/gpars/1.0-beta-2/8d6342aa7121f9b95f0814bc2a573bb305f87c2c/gpars-1.0-beta-2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.jsr166-mirror/extra166y/1.7.0/c8ca938286e7a9cca58671ca3029574a35660fc/extra166y-1.7.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/1.3.2/b6dde38349ba9bb5e6ea6320531eae969985dae5/commons-io-1.3.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.jsr166-mirror/jsr166y/1.7.0/8547fcb1c29b4f8c745c3f49a536aca58fc30f54/jsr166y-1.7.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.4.5/1730f61e9c9e59fd1b814371265334d7be0b8d2/groovy-all-2.4.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
